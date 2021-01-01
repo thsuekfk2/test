@@ -1,0 +1,204 @@
+<html>
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.4, maximum-scale=10, user-scalable=0">
+
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
+        
+        
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+
+</head>
+<body>
+     
+<!--메인-->
+<div align="right" id=login1 >로그인</div>
+    <div align="right" id=login2 >회원가입</div>
+    
+<center>
+    <image src="https://i.pinimg.com/originals/dd/62/cb/dd62cb20bb3b62171bd78e4415f28d79.gif" height=200 ></image><br>
+    <br>
+    
+    
+<!--버튼-->    
+    <a href='movie.html'> <button type="button" class="btn btn-warning">MOVIE</button></a>
+    <a href='book.html'><button type="button" class="btn btn-warning">BOOK</button></a>
+    <a href='diary.html'><button type="button" class="btn btn-warning">DIARY</button></a>
+
+</center>
+
+<!--카드 프로필-->
+    
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div class="table"> <img src="https://mblogthumb-phinf.pstatic.net/MjAxOTA3MTJfNDkg/MDAxNTYyODk1MDkzOTMy.IKr9GF9c2QkX74Ac6XGn8ZmTloUyDuOIf-cJwhN9GQUg.yCq5nZPAAb2Sn8QYXMJFstc0e6zViBu_hIN3FaTgQZog.JPEG.yellowouk2/0d43d9794f55dc2108473bc259912285.jpg?type=w800" class="card-img-top" alt="...">
+                <div class="table-body">
+                    <br><h5 class="table-title">이혜빈</h5>
+                    <p class="table-text">강남대학교 소프트웨어응용학부. lhb1513@naver.com </p> 
+                    <a href="#" class="btn btn-warning">SNS</a> &nbsp;
+                    <a href="#" class="btn btn-warning">E-MAIL</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-5"><center><br><span style=" font: italic bold 1.5em/1em Georgia, serif ;">
+                <br><br>
+
+               <ul>
+                  <li>Impossible is nothing</li><br>
+                   <li>actions speak louder than words</li><br>
+                   <li>If you do not walk today</li><br>
+                   
+   
+                   </ul> 
+            </span>
+            </center>
+            </div>
+        
+        
+        <div class="col-3" id="app"></div>
+        <div class="col-3" id="ad"></div>
+    </div>
+   
+</div>
+
+
+
+<script>
+    
+
+    
+     
+    var array = [{
+            name: '98도씨',
+            link: 'https://www.98doci.com/index.html',
+            image: '98.jpg'
+        },
+        {
+            name: '무신사',
+            link: 'https://store.musinsa.com/app/',
+            image: 'mu.jpg'
+        },
+        {
+            name: '블랙업',
+            link: 'https://www.black-up.kr/',
+            image: 'bl.jpg'
+        }
+    ];
+
+
+
+
+    var array2 = [{
+            name: '11번가',
+            link: 'www.11st.co.kr',
+            image: '11.jpg'
+        },
+        {
+            name: '쿠팡',
+            link: 'www.coupang.com',
+            image: 'cu.jpg'
+        },
+        {
+            name: 'G마켓',
+            link: 'www.gmarket.co.kr',
+            image: 'g.jpg'
+        },
+        {
+            name: '티몬',
+            link: 'www.tmon.co.kr',
+            image: 'tmon.jpg'
+        }
+    ];
+
+
+
+    /*html = "";
+    text1 = "<center><br><span style=' font: italic bold 1.5em/1em Georgia, serif ;'>Shopping mall</span></center><br>";
+    for (i = 0; i < array.length; i++)
+        html += "<a href=" + array[i].link + " ><img src=" + array[i].image + " height=100 width=300>" + "</a><br>";
+    
+    $("#banner").html(text1+html);
+*/
+
+    setInterval(function() {
+      idx = Math.floor(Math.random() * 4);
+        html = "<center><br><span style=' font: italic bold 1.5em/1em Georgia, serif ;'>ADD</span><br><a href=" + array2[idx].link + " ><img src=" + array2[idx].image + " height=100 width=200>" + "</center></a><br>";
+        $("#ad").html(html);
+
+    }, 2000);
+    
+    
+   
+   
+    //뷰 객체
+    function Vue(x) {
+    
+      html = "";
+    text1 = "<center><br><span style=' font: italic bold 1.5em/1em Georgia, serif ;'>Shopping mall</span></center><br>";
+    
+    for(i = 0; i < x.data.length; i++) {
+      
+        html +="<a href=" + x.data[i].link + " ><img src=" + x.data[i].image + " height=100 width=300>" + "</a><br>"
+    }
+   
+    $(a.el).html(text1+html);
+ 
+}
+    
+
+    
+
+    //배너 객체를 만들어서 
+    
+    a = {
+        el:"#app", //id정의
+        data:[{
+            name: '98도씨',
+            link: 'https://www.98doci.com/index.html',
+            image: '98.jpg'
+        },
+        {
+            name: '무신사',
+            link: 'https://store.musinsa.com/app/',
+            image: 'mu.jpg'
+        },
+        {
+            name: '블랙업',
+            link: 'https://www.black-up.kr/',
+            image: 'bl.jpg'
+        }
+    ],
+       
+        fun: function(x) 
+        {           
+            for(i=0;i<x.data.length;i++)
+                x.data[i] = x.data[i];                  
+        }
+        
+
+        }
+            
+        
+        
+        v = new Vue(a);    
+
+    
+
+
+        
+    
+</script>
+
+</body>
+</html>
