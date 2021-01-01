@@ -1,0 +1,115 @@
+<html>
+
+<head>
+    
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+<meta name="viewport" content="width=device-width, initial-scale=10, maximum-scale=10, user-scalable=0">
+ 
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+           <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+
+ 
+    
+    <style>
+    .blue{color: khaki }
+    .gray{color: gray}
+    .font1{font: italic bold 1.5em/1em Georgia, serif}
+
+
+    </style>
+   
+    
+</head>    
+
+<body>
+<center>
+    <div id="app">
+            
+        <h1><p class="font1" >{{title}} </p></h1>
+        
+        <table border=1 class="table table-bordered table-sm table-bordered table-hover">
+           
+           <tr>
+            <td><strong>번호</strong></td>
+            <td><strong>제목</strong></td>
+            <td><strong>내용</strong></td>
+            <td><strong>사진</strong></td>
+            
+            </tr>
+             <tr v-for="(x, index) in lists">
+                <td>{{index+1}}</td>
+                <td>{{x.title}}<img v-if="x.visible"  src=star.jpg width=32 height=32></td>
+                 <td>{{x.text1}}</td>
+                <td><img :src="x.image" width="300"> </td>                
+            </tr>  
+        </table>    
+        
+        <div>{{copyright}} </div> 
+        
+            <br><br><br>
+           <input type=text v-model ="b_title">
+         <input type=text v-model ="b_text">
+        <input type=text v-model ="b_image">
+        
+        
+        
+    
+
+
+    
+    
+   
+         <button  class="btn btn-dark" @click="append()">작성</button> <br><br><br>
+        
+ 
+        
+                </div>
+
+        
+        
+        
+        
+        
+        
+ <script>
+             
+
+    new Vue({
+        el :"#app",
+        data : {
+            title : "나의 일기장",
+            copyright : "@hyebin",
+            b_title : "제목",
+            b_text : "내용",
+            b_image : "이미지",
+          
+            lists : [
+            {title:"웹프로트개발 1일차", image:"https://media.istockphoto.com/photos/horizontal-photo-of-goodlooking-caucasian-man-pictured-isolated-on-picture-id1022174638?k=6&m=1022174638&s=170667a&w=0&h=d3WVIGNf3_C4A27CfhB8OmdALFRZCy2wgXiGEI1jX0c=", text1:"재미있는 프론트 수업!!!!", visible:1},
+            {title:"웹프로트개발 2일차", image:"https://i.pinimg.com/originals/9e/0f/0e/9e0f0e4f9d9be0500cdffb17422ff855.gif", text1:"알차고 좋은 수업!!!!!", visible:1},
+            ]
+        },
+        methods : {
+            
+            append : function(){
+           
+                
+                d={ title:this.b_title, image:this.b_image, text1:this.b_text};
+                this.lists.push(d);
+                this.b_title="";
+                
+                this.b_text=""
+                this.b_image="";
+            }
+        }
+        
+    });    
+        
+        
+        </script>
+    </body>
+</html>
