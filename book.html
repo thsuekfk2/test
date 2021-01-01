@@ -1,0 +1,134 @@
+<html>
+
+<head>
+    
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+<meta name="viewport" content="width=device-width, initial-scale=10, maximum-scale=10, user-scalable=0">
+ 
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+           <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+
+ 
+    
+    <style>
+    .blue{color: khaki }
+    .gray{color: gray}
+    .font1{font: italic bold 1.5em/1em Georgia, serif}
+
+
+    </style>
+   
+    
+</head>    
+
+<body>
+
+<center><div class="blue font1">내가 좋아하는 책 </div>
+
+    <font class="gray" font size=800px >젊은 베르테르의 슬픔</font><br>
+    <img src="be.jpg" width="400"> <img src=" https://images.christiantoday.co.kr/data/images/full/330778/image.jpg?w=654?w=600" width="400"><Br><Br>
+
+<pre>발하임으로 이주한 지식인 베르테르는 무도회에서 알게 된 로테를 보고 첫 눈에 반한다.
+베르테르는 로테에게 접근하여 친교를 맺고 집을 왕래할 정도로 그녀와 가까워진다.
+로테에 대한 사랑의 감정이 커질즈음 갑작스레 로테의 약혼자 알베르트가 발하임으로 돌아오면서 베르테르는 크게 실망한다.
+베르테르는 알베르트의 존재를 인정하고 존중하지만 베르테르는 점차 로테에 대한 치정이 깊어지면서 알베르트와도 불편한 관계를 형성하게 된다.
+가질 수 없는 사랑에 괴로워하던 베르테르는 로테를 잊고자 발하임을 떠나기도 하지만 귀족 사회의 폐해만을 경험한 채 좌절하여 다시 발하임으로 돌아온다.
+이미 유부녀가 되어버린 로테의 주위를 맴돌며 베르테르는 고통스러워하고,
+로테는 베르테르에게 친밀감과 호감을 느끼면서도 남편을 위해 베르테르와 거리를 두고자 한다. 
+결국 베르테르는 로테에게 구애하며 키스를 시도하고, 당황한 로테는 베르테르와의 절교를 선언한다. 
+절망에 빠진 베르테르는 알베르트에게 빌린 총으로 스스로의 머리를 쏘아 권총자살로 생을 마감한다.
+    </pre>
+    <br>
+    
+    <a href="https://ko.wikipedia.org/wiki/%EC%A0%8A%EC%9D%80_%EB%B2%A0%EB%A5%B4%ED%85%8C%EB%A5%B4%EC%9D%98_%EC%8A%AC%ED%94%94">위키 백과 사전 바로가기</a><br>
+    
+         <br>
+
+
+		 <a href='book_next.html'><button    type="button" class="btn btn-dark">
+           베르테르 효과란?</button></a> <br><br>
+
+    
+    
+    <div id="app">
+            
+        <h1>{{title}} </h1>
+        
+        <table border=1  class="table table-striped table-bordered table-hover">
+            <tr>
+            <td><strong>번호</strong></td>
+            <td><strong>주인공</strong></td>
+            <td><strong>사진</strong></td>
+            
+            </tr>
+             <tr v-for="(x, index) in lists">
+                <td>{{index+1}}</td>
+                <td><a :href="x.link">{{x.title}}<img v-if="x.visible"  src=star.jpg width=32 height=32></a></td>
+                <td><img :src="x.image" width="300"> </td>                
+            </tr>  
+        </table>    
+        
+        <div>{{copyright}} </div> 
+        
+            <br><br><br>
+           <input type=text v-model ="b_title">
+        <input type=text v-model ="b_image">
+         <input type=text v-model ="b_link">
+        
+        
+    
+
+
+    
+    
+   
+         <button  class="btn btn-dark" @click="append()">작성</button> <br><br><br>
+        
+ 
+        
+                </div>
+
+  
+        
+ <script>
+             
+
+    new Vue({
+        el :"#app",
+        data : {
+            title : "좋아하는 사진 추가하기",
+            copyright : "@hyebin",
+            b_title : "제목",
+            b_image : "이미지",
+            b_link : "URL",
+            lists : [
+            {title:"샤를로테", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKQwqkcGEa7jeMSOkPvBvkpbX_pY7blP69zg&usqp=CAU", link:"http://google.co.kr", visible:1},
+            {title:"베르테르", image:"https://steemitimages.com/640x0/http://i0.kym-cdn.com/photos/images/newsfeed/000/034/840/werther_color-798085.jpg?1318992465", link:"http://google.co.kr", visible:1},
+            ]
+        },
+        methods : {
+            
+            append : function(){
+           
+                
+                d={ title:this.b_title, image:this.b_image, link:this.b_link};
+                this.lists.push(d);
+                this.b_title="";
+                this.b_image="";
+                this.b_link="";
+                
+            }
+        }
+        
+    });    
+        
+        
+        </script>
+</body>
+
+</html>
